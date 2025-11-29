@@ -163,7 +163,7 @@ const data = {
   navSecondary: [
     {
       title: "Github",
-      url: "https://github.com/gowvp/gb28181",
+      url: "https://github.com/C018/gb28181",
       icon: Github,
     },
   ],

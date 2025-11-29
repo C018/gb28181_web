@@ -187,7 +187,7 @@ function TopNavUser({
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem
-            onClick={() => window.open("https://github.com/gowvp/gb28181")}
+            onClick={() => window.open("https://github.com/C018/gb28181")}
           >
             <Github className="mr-2 h-4 w-4" />
             Github
@@ -196,7 +196,7 @@ function TopNavUser({
 
         <DropdownMenuGroup>
           <DropdownMenuItem
-            onClick={() => window.open("https://gitee.com/gowvp/gb28181")}
+            onClick={() => window.open("https://gitee.com/C018/gb28181")}
           >
             <Sparkles className="mr-2 h-4 w-4" />
             Gitee
