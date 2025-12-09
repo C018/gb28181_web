@@ -80,7 +80,7 @@ export function NavUser({
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem
-                onClick={() => window.open("https://github.com/gowvp/gb28181")}
+                onClick={() => window.open("https://github.com/C018/gb28181")}
               >
                 {/* <Sparkles /> */}
                 <Github />
@@ -90,7 +90,7 @@ export function NavUser({
 
             <DropdownMenuGroup>
               <DropdownMenuItem
-                onClick={() => window.open(" https://gitee.com/gowvp/gb28181")}
+                onClick={() => window.open("https://gitee.com/C018/gb28181")}
               >
                 <Sparkles />
                 Gitee
