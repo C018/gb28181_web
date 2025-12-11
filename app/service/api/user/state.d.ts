@@ -21,7 +21,11 @@ export interface UserState {
   loading: boolean;
 }
 
-// 修改账号密码请求
+/**
+ * 修改账号密码请求
+ * @property username - 新的用户名
+ * @property password - 新的密码，建议使用强密码
+ */
 export interface UpdateUserRequest {
   username: string;
   password: string;

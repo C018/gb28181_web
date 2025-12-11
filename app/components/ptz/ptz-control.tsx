@@ -42,7 +42,7 @@ export default function PTZControlPanel({
   const { mutate: controlMutate, isPending: isControlPending } = useMutation({
     mutationFn: PTZControl,
     onSuccess: () => {
-      // toastSuccess("控制成功");
+      // PTZ control is a continuous operation, no need for toast on success
     },
     onError: ErrorHandle,
   });

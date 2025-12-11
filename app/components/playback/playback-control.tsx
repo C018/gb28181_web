@@ -70,7 +70,7 @@ export default function PlaybackControlPanel({
 
   const handleStartPlayback = () => {
     if (!startTime || !endTime) {
-      toastSuccess("请选择开始和结束时间");
+      ErrorHandle(new Error("请选择开始和结束时间"));
       return;
     }
 
@@ -78,7 +78,7 @@ export default function PlaybackControlPanel({
     const end = new Date(endTime).getTime() / 1000;
 
     if (start >= end) {
-      toastSuccess("开始时间必须早于结束时间");
+      ErrorHandle(new Error("开始时间必须早于结束时间"));
       return;
     }
 
@@ -122,10 +122,6 @@ export default function PlaybackControlPanel({
   };
 
   const isPending = isStartPending || isStopPending || isControlPending;
-
-  // 获取当前时间，用于默认值
-  const now = new Date();
-  const oneHourAgo = new Date(now.getTime() - 60 * 60 * 1000);
 
   return (
     <div className="bg-white rounded-lg p-4 space-y-4">

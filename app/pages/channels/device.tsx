@@ -152,6 +152,8 @@ export default function DeviceDetailView({
                   is_online: item.is_online,
                   ext: {
                     ...item.ext,
+                    // Channel ext doesn't have gb_version, but device ext does
+                    // Using empty string as default for type compatibility
                     gb_version: "",
                   },
                   created_at: "",
