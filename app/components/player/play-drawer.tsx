@@ -35,6 +35,7 @@ export default function PlayDrawer({
   const { t } = useTranslation("common");
   const deviceDetailRef = useRef<any>(null);
   const [showSidebar, setShowSidebar] = useState(true);
+  const [currentItem, setCurrentItem] = useState<any>(null);
 
   // 底部容器引用，用于动态测量高度
   const footerRef = useRef<HTMLDivElement>(null);
@@ -64,6 +65,7 @@ export default function PlayDrawer({
   React.useImperativeHandle(ref, () => ({
     open(item: any, options?: { hideSidebar?: boolean }) {
       console.log("打开播放详情，ID:", item.id);
+      setCurrentItem(item);
 
       if (options?.hideSidebar !== undefined) {
         setShowSidebar(!options.hideSidebar);
@@ -219,7 +221,12 @@ export default function PlayDrawer({
           {/* 设备详情/介绍 - 小屏幕时隐藏 */}
           {showSidebar && (
             <div className="hidden sm:block w-80 lg:w-96 border-l bg-white overflow-y-auto">
-              <DeviceDetailView ref={deviceDetailRef} />
+              <DeviceDetailView
+                ref={deviceDetailRef}
+                channelId={currentItem?.channel_id}
+                app={playData?.data?.app}
+                stream={playData?.data?.stream}
+              />
             </div>
           )}
         </div>

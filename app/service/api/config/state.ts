@@ -1,5 +1,7 @@
 export type GetConfigInfoResponse = {
   sip: Sip;
+  play_expire_minutes?: number;
+  enable_snapshot_blur?: boolean;
   //   [property: string]: any;
 };
 
@@ -26,3 +28,8 @@ export type Sip = {
   port: number;
   [property: string]: any;
 };
+
+export interface ServerSettingsRequest {
+  play_expire_minutes?: number;
+  enable_snapshot_blur?: boolean;
+}
