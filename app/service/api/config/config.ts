@@ -1,5 +1,5 @@
 import { GET, POST, PUT } from "~/service/config/http";
-import type { GetConfigInfoResponse } from "./state";
+import type { GetConfigInfoResponse, ServerSettingsRequest } from "./state";
 
 export const getConfigInfoKey = "getConfigInfo";
 export async function GetConfigInfo() {
@@ -8,4 +8,8 @@ export async function GetConfigInfo() {
 
 export async function SetConfigSIP(values: any) {
   return await PUT(`/configs/info/sip`, values);
+}
+
+export async function SetServerSettings(values: ServerSettingsRequest) {
+  return await PUT(`/configs/info/server`, values);
 }

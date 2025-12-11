@@ -13,6 +13,7 @@ import { ChannelCardItem } from "./channels";
 import { useTranslation } from "react-i18next";
 import PTZControlPanel from "~/components/ptz/ptz-control";
 import RecordControlPanel from "~/components/record/record-control";
+import PlaybackControlPanel from "~/components/playback/playback-control";
 
 export default function DeviceDetailView({
   ref,
@@ -57,19 +58,19 @@ export default function DeviceDetailView({
   return (
     <div className="w-[300px]">
       <Tabs defaultValue="device">
-        <TabsList className="ml-4 grid grid-cols-4 w-[280px]">
+        <TabsList className="ml-4 grid grid-cols-5 w-[280px]">
           <TabsTrigger
             className="data-[state=active]:bg-black data-[state=active]:text-white text-xs"
             value="device"
           >
-            {t("common:device_detail")}
+            设备
           </TabsTrigger>
           <TabsTrigger
             className="data-[state=active]:bg-black data-[state=active]:text-white text-xs"
             value="channels"
             onClick={() => refetchChannels()}
           >
-            {t("common:channel_list")}
+            通道
           </TabsTrigger>
           {channelId && did && (
             <TabsTrigger
@@ -85,6 +86,14 @@ export default function DeviceDetailView({
               value="record"
             >
               录像
+            </TabsTrigger>
+          )}
+          {channelId && did && (
+            <TabsTrigger
+              className="data-[state=active]:bg-black data-[state=active]:text-white text-xs"
+              value="playback"
+            >
+              回放
             </TabsTrigger>
           )}
         </TabsList>
@@ -165,6 +174,11 @@ export default function DeviceDetailView({
         {app && stream && (
           <TabsContent value="record" className="px-4">
             <RecordControlPanel app={app} stream={stream} />
+          </TabsContent>
+        )}
+        {channelId && did && (
+          <TabsContent value="playback" className="px-4">
+            <PlaybackControlPanel deviceId={did} channelId={channelId} />
           </TabsContent>
         )}
       </Tabs>

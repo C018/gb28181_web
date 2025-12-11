@@ -17,6 +17,7 @@ import { ConfigProvider, App as AntdApp } from "antd";
 import { DrawerCSSProvider } from "./components/xui/drawer";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n/config";
+import NotificationListener from "./components/notification/notification-listener";
 
 import "@ant-design/v5-patch-for-react-19";
 
@@ -65,7 +66,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
               }}
             >
               <AntdApp>
-                <DrawerCSSProvider>{children}</DrawerCSSProvider>
+                <DrawerCSSProvider>
+                  <NotificationListener />
+                  {children}
+                </DrawerCSSProvider>
               </AntdApp>
             </ConfigProvider>
 

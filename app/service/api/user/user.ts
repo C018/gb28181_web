@@ -1,5 +1,5 @@
-import type { LoginRequest, LoginResponse } from './state.d.ts';
-import { POST } from '../../config/http';
+import type { LoginRequest, LoginResponse, UpdateUserRequest } from './state.d.ts';
+import { POST, PUT } from '../../config/http';
 import { TokenStr } from '../../config/http';
 
 // 登录接口
@@ -43,4 +43,9 @@ export function isLoggedIn(): boolean {
 // 获取token
 export function getToken(): string | null {
   return localStorage.getItem(TokenStr);
+}
+
+// 修改账号密码
+export async function updateUser(data: UpdateUserRequest) {
+  return await PUT('/user/user', data);
 }

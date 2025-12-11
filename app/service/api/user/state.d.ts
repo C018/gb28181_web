@@ -20,3 +20,9 @@ export interface UserState {
   isLoggedIn: boolean;
   loading: boolean;
 }
+
+// 修改账号密码请求
+export interface UpdateUserRequest {
+  username: string;
+  password: string;
+}
