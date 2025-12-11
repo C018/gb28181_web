@@ -11,11 +11,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { FindChannels, findChannelsKey } from "~/service/api/channel/channel";
 import { ChannelCardItem } from "./channels";
 import { useTranslation } from "react-i18next";
+import PTZControlPanel from "~/components/ptz/ptz-control";
+import RecordControlPanel from "~/components/record/record-control";
 
 export default function DeviceDetailView({
   ref,
+  channelId,
+  app,
+  stream,
 }: {
   ref: React.RefObject<any>;
+  channelId?: string;
+  app?: string;
+  stream?: string;
 }) {
   const { t } = useTranslation(["device", "common"]);
   const [did, setDid] = useState("");
@@ -49,20 +57,36 @@ export default function DeviceDetailView({
   return (
     <div className="w-[300px]">
       <Tabs defaultValue="device">
-        <TabsList className="ml-4">
+        <TabsList className="ml-4 grid grid-cols-4 w-[280px]">
           <TabsTrigger
-            className="data-[state=active]:bg-black data-[state=active]:text-white"
+            className="data-[state=active]:bg-black data-[state=active]:text-white text-xs"
             value="device"
           >
             {t("common:device_detail")}
           </TabsTrigger>
           <TabsTrigger
-            className="data-[state=active]:bg-black data-[state=active]:text-white"
+            className="data-[state=active]:bg-black data-[state=active]:text-white text-xs"
             value="channels"
             onClick={() => refetchChannels()}
           >
             {t("common:channel_list")}
           </TabsTrigger>
+          {channelId && did && (
+            <TabsTrigger
+              className="data-[state=active]:bg-black data-[state=active]:text-white text-xs"
+              value="ptz"
+            >
+              云台
+            </TabsTrigger>
+          )}
+          {app && stream && (
+            <TabsTrigger
+              className="data-[state=active]:bg-black data-[state=active]:text-white text-xs"
+              value="record"
+            >
+              录像
+            </TabsTrigger>
+          )}
         </TabsList>
         <TabsContent value="device">
           {/* <h3>国标设备</h3> */}
@@ -130,6 +154,16 @@ export default function DeviceDetailView({
             ))}
           </div>
         </TabsContent>
+        {channelId && did && (
+          <TabsContent value="ptz" className="px-4">
+            <PTZControlPanel deviceId={did} channelId={channelId} />
+          </TabsContent>
+        )}
+        {app && stream && (
+          <TabsContent value="record" className="px-4">
+            <RecordControlPanel app={app} stream={stream} />
+          </TabsContent>
+        )}
       </Tabs>
     </div>
   );
