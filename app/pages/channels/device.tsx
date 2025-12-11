@@ -141,7 +141,10 @@ export default function DeviceDetailView({
                   name: item.name,
                   ptztype: item.ptztype,
                   is_online: item.is_online,
-                  ext: item.ext,
+                  ext: {
+                    ...item.ext,
+                    gb_version: "",
+                  },
                   created_at: "",
                   updated_at: "",
                   is_playing: false,

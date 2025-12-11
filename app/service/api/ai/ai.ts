@@ -1,4 +1,4 @@
-import http from "~/service/config/http";
+import { POST, GET, PUT, DELETE } from "~/service/config/http";
 import type {
   AIDetectRequest,
   AIDetectResponse,
@@ -10,35 +10,35 @@ import type {
 
 // 执行 AI 检测
 export async function DetectAI(data: AIDetectRequest) {
-  return http.post<AIDetectResponse>("/ai/detect", data);
+  return POST<AIDetectResponse>("/ai/detect", data);
 }
 
 // 获取告警规则列表
 export async function GetAIRules() {
-  return http.get<AIRulesResponse>("/ai/rules");
+  return GET<AIRulesResponse>("/ai/rules");
 }
 
 // 创建告警规则
 export async function CreateAIRule(data: AIRuleCreateRequest) {
-  return http.post<AIRule>("/ai/rules", data);
+  return POST<AIRule>("/ai/rules", data);
 }
 
 // 获取告警规则详情
 export async function GetAIRule(id: string) {
-  return http.get<AIRule>(`/ai/rules/${id}`);
+  return GET<AIRule>(`/ai/rules/${id}`);
 }
 
 // 更新告警规则
 export async function UpdateAIRule(id: string, data: Partial<AIRuleCreateRequest>) {
-  return http.put<AIRule>(`/ai/rules/${id}`, data);
+  return PUT<AIRule>(`/ai/rules/${id}`, data);
 }
 
 // 删除告警规则
 export async function DeleteAIRule(id: string) {
-  return http.delete(`/ai/rules/${id}`);
+  return DELETE(`/ai/rules/${id}`);
 }
 
 // 获取 AI 服务状态
 export async function GetAIStatus() {
-  return http.get<AIStatusResponse>("/ai/status");
+  return GET<AIStatusResponse>("/ai/status");
 }

@@ -1,4 +1,4 @@
-import http from "~/service/config/http";
+import { POST } from "~/service/config/http";
 import type {
   PTZControlRequest,
   PTZPresetRequest,
@@ -7,10 +7,10 @@ import type {
 
 // PTZ方向控制
 export async function PTZControl(data: PTZControlRequest) {
-  return http.post<PTZControlResponse>("/ptz/control", data);
+  return POST<PTZControlResponse>("/ptz/control", data);
 }
 
 // PTZ预置位控制
 export async function PTZPreset(data: PTZPresetRequest) {
-  return http.post<PTZControlResponse>("/ptz/preset", data);
+  return POST<PTZControlResponse>("/ptz/preset", data);
 }
